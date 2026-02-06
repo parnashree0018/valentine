@@ -3,9 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Valentine 💖</title>
-
-    <!-- IMPORTANT for mobile -->
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
@@ -27,7 +24,7 @@
         }
 
         h1 {
-            font-size: 1.8rem;
+            font-size: 1.7rem;
             margin-bottom: 40px;
         }
 
@@ -38,7 +35,6 @@
             border-radius: 12px;
             cursor: pointer;
             position: absolute;
-            touch-action: manipulation;
         }
 
         #yes {
@@ -53,30 +49,56 @@
             right: 10%;
         }
 
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 1.5rem;
-            }
+        .gift {
+            display: none;
+            animation: fadeIn 1s ease-in;
+        }
 
-            button {
-                padding: 14px 24px;
-                font-size: 1.1rem;
-            }
+        .gift h2 {
+            font-size: 1.6rem;
+        }
+
+        .gift img {
+            width: 100%;
+            max-width: 250px;
+            border-radius: 20px;
+            margin: 20px 0;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <h1>Will you be my Valentine? 💘</h1>
+        <!-- QUESTION SCREEN -->
+        <div id="question">
+            <h1>Will you be my Valentine? 💘</h1>
+            <button id="yes" onclick="showGift()">YES 💖</button>
+            <button id="no" ontouchstart="moveNo()" onmouseover="moveNo()">NO 💔</button>
+        </div>
 
-        <button id="yes" onclick="yesClick()">YES 💖</button>
-        <button id="no" ontouchstart="moveNo()" onmouseover="moveNo()">NO 💔</button>
+        <!-- GIFT SCREEN -->
+        <div class="gift" id="gift">
+            <h2>🎁 Your Valentine Gift 🎁</h2>
+            <p>You just unlocked something special 💕</p>
+
+            <!-- Change image name -->
+            <img src="gift.jpg" alt="Gift">
+
+            <p>
+                I choose you. Today, tomorrow, always ❤️  
+            </p>
+        </div>
     </div>
 
     <script>
-        function yesClick() {
-            alert("Yayyy! I knew it 😍💖");
+        function showGift() {
+            document.getElementById("question").style.display = "none";
+            document.getElementById("gift").style.display = "block";
         }
 
         function moveNo() {
@@ -95,4 +117,3 @@
     </script>
 </body>
 </html>
-    
