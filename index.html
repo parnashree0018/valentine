@@ -5,115 +5,41 @@
     <title>Valentine 💖</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        body {
-            margin: 0;
-            background-color: #ffccdc;
-            font-family: "Comic Sans MS", cursive;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .container {
-            text-align: center;
-            width: 90%;
-            max-width: 400px;
-            position: relative;
-        }
-
-        h1 {
-            font-size: 1.7rem;
-            margin-bottom: 40px;
-        }
-
-        button {
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            position: absolute;
-        }
-
-        #yes {
-            background-color: #2ecc71;
-            color: white;
-            left: 10%;
-        }
-
-        #no {
-            background-color: #e74c3c;
-            color: white;
-            right: 10%;
-        }
-
-        .gift {
-            display: none;
-            animation: fadeIn 1s ease-in;
-        }
-
-        .gift h2 {
-            font-size: 1.6rem;
-        }
-
-        .gift img {
-            width: 100%;
-            max-width: 250px;
-            border-radius: 20px;
-            margin: 20px 0;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
-    </style>
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="container">
-        <!-- QUESTION SCREEN -->
-        <div id="question">
-            <h1>Will you be my Valentine? 💘</h1>
-            <button id="yes" onclick="showGift()">YES 💖</button>
-            <button id="no" ontouchstart="moveNo()" onmouseover="moveNo()">NO 💔</button>
-        </div>
+<div class="container">
 
-        <!-- GIFT SCREEN -->
-        <div class="gift" id="gift">
-            <h2>🎁 Your Valentine Gift 🎁</h2>
-            <p>You just unlocked something special 💕</p>
-
-            <!-- Change image name -->
-            <img src="gift.jpg" alt="Gift">
-
-            <p>
-                I choose you. Today, tomorrow, always ❤️  
-            </p>
-        </div>
+    <!-- QUESTION SCREEN -->
+    <div id="question">
+        <h1>Will you be my Valentine? 💘</h1>
+        <button id="yes" onclick="goToPassword()">YES 💖</button>
+        <button id="no" ontouchstart="moveNo()" onmouseover="moveNo()">NO 💔</button>
     </div>
 
-    <script>
-        function showGift() {
-            document.getElementById("question").style.display = "none";
-            document.getElementById("gift").style.display = "block";
-        }
+    <!-- PASSWORD SCREEN -->
+    <div class="screen" id="passwordScreen">
+        <h2>🔐 Enter the secret password</h2>
+        <p>(Hint: Something only we know 💕)</p>
+        <input type="password" id="password" placeholder="Enter password 💌">
+        <br>
+        <button class="unlock-btn" onclick="checkPassword()">Unlock 🎁</button>
+        <p class="error" id="errorMsg"></p>
+    </div>
 
-        function moveNo() {
-            const container = document.querySelector('.container');
-            const noBtn = document.getElementById('no');
+    <!-- GIFT SCREEN -->
+    <div class="screen gift" id="giftScreen">
+        <h2>🎁 Your Valentine Gift 🎁</h2>
+        <p>You unlocked my heart ❤️</p>
+        <img src="gift.jpg" alt="Gift">
+        <p>I choose you — today, tomorrow & always 💖</p>
+    </div>
 
-            const maxX = container.clientWidth - noBtn.offsetWidth;
-            const maxY = container.clientHeight - noBtn.offsetHeight;
+</div>
 
-            const x = Math.random() * maxX;
-            const y = Math.random() * (maxY - 60) + 60;
-
-            noBtn.style.left = x + "px";
-            noBtn.style.top = y + "px";
-        }
-    </script>
+<!-- Link JS -->
+<script src="script.js"></script>
 </body>
 </html>
