@@ -1,4 +1,7 @@
-const correctPassword = "forever"; // 🔑 CHANGE THIS
+const correctPassword = "love123"; // change if needed
+
+let noScale = 1;
+let yesScale = 1;
 
 function goToPassword() {
     document.getElementById("question").style.display = "none";
@@ -20,12 +23,22 @@ function checkPassword() {
 function moveNo() {
     const container = document.querySelector('.container');
     const noBtn = document.getElementById('no');
+    const yesBtn = document.getElementById('yes');
 
+    // 🔻 shrink NO
+    noScale = Math.max(0.4, noScale - 0.1);
+    noBtn.style.transform = `scale(${noScale})`;
+
+    // 🔺 grow YES
+    yesScale = Math.min(2.2, yesScale + 0.1);
+    yesBtn.style.transform = `scale(${yesScale})`;
+
+    // 🎯 move NO randomly (always inside container)
     const maxX = container.clientWidth - noBtn.offsetWidth;
     const maxY = container.clientHeight - noBtn.offsetHeight;
 
     const x = Math.random() * maxX;
-    const y = Math.random() * (maxY - 60) + 60;
+    const y = Math.random() * (maxY - 80) + 80;
 
     noBtn.style.left = x + "px";
     noBtn.style.top = y + "px";
