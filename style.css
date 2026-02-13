@@ -36,10 +36,13 @@ button {
 }
 
 #no {
-    background-color: #e74c3c;
-    color: white;
-    right: 10%;
+    position: absolute;
 }
+
+button {
+    transition: transform 0.2s ease;
+}
+
 
 .screen {
     display: none;
@@ -80,4 +83,5 @@ input {
     from { opacity: 0; transform: scale(0.9); }
     to { opacity: 1; transform: scale(1); }
 }
+
 
