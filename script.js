@@ -21,25 +21,29 @@ function checkPassword() {
 }
 
 function moveNo() {
-    const container = document.querySelector('.container');
     const noBtn = document.getElementById('no');
     const yesBtn = document.getElementById('yes');
 
-    // 🔻 shrink NO
-    noScale = Math.max(0.4, noScale - 0.1);
+    // 🔻 shrink NO gradually
+    noScale -= 0.08;
+    if (noScale < 0.4) noScale = 0.4;
     noBtn.style.transform = `scale(${noScale})`;
 
-    // 🔺 grow YES
-    yesScale = Math.min(2.2, yesScale + 0.1);
+    // 🔺 grow YES gradually
+    yesScale += 0.12;
+    if (yesScale > 3) yesScale = 3;
     yesBtn.style.transform = `scale(${yesScale})`;
 
-    // 🎯 move NO randomly (always inside container)
-    const maxX = container.clientWidth - noBtn.offsetWidth;
-    const maxY = container.clientHeight - noBtn.offsetHeight;
+    // 🎯 Move anywhere on screen (not just container)
+    const maxX = window.innerWidth - noBtn.offsetWidth;
+    const maxY = window.innerHeight - noBtn.offsetHeight;
 
     const x = Math.random() * maxX;
-    const y = Math.random() * (maxY - 80) + 80;
+    const y = Math.random() * maxY;
 
+    noBtn.style.position = "fixed";  // 👈 KEY FIX
     noBtn.style.left = x + "px";
     noBtn.style.top = y + "px";
 }
+
+
