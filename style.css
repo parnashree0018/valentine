@@ -42,7 +42,7 @@ button {
 #no {
     background: red;
     color: white;
-    position: fixed;
+   
 }
 
 input {
@@ -67,3 +67,4 @@ img {
 #error {
     color: red;
 }
+
