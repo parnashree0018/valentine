@@ -1,49 +1,51 @@
-const correctPassword = "love123"; // change if needed
+const correctPassword = "love123";
+
+const yesBtn = document.getElementById("yes");
+const noBtn = document.getElementById("no");
+const unlockBtn = document.getElementById("unlock");
 
 let noScale = 1;
 let yesScale = 1;
 
-function goToPassword() {
-    document.getElementById("question").style.display = "none";
-    document.getElementById("passwordScreen").style.display = "block";
-}
+/* YES CLICK */
+yesBtn.addEventListener("click", () => {
+    document.getElementById("question-screen").classList.add("hidden");
+    document.getElementById("password-screen").classList.remove("hidden");
+});
 
-function checkPassword() {
-    const input = document.getElementById("password").value;
-    const error = document.getElementById("errorMsg");
+/* NO CLICK */
+noBtn.addEventListener("click", () => {
 
-    if (input === correctPassword) {
-        document.getElementById("passwordScreen").style.display = "none";
-        document.getElementById("giftScreen").style.display = "block";
-    } else {
-        error.textContent = "Wrong password 😜 Try again!";
-    }
-}
-
-function moveNo() {
-    const noBtn = document.getElementById('no');
-    const yesBtn = document.getElementById('yes');
-
-    // 🔻 shrink NO gradually
-    noScale -= 0.08;
-    if (noScale < 0.4) noScale = 0.4;
+    // shrink NO
+    noScale -= 0.1;
+    if (noScale < 0.3) noScale = 0.3;
     noBtn.style.transform = `scale(${noScale})`;
 
-    // 🔺 grow YES gradually
-    yesScale += 0.12;
+    // grow YES
+    yesScale += 0.15;
     if (yesScale > 3) yesScale = 3;
     yesBtn.style.transform = `scale(${yesScale})`;
 
-    // 🎯 Move anywhere on screen (not just container)
+    // move NO randomly on screen
     const maxX = window.innerWidth - noBtn.offsetWidth;
     const maxY = window.innerHeight - noBtn.offsetHeight;
 
-    const x = Math.random() * maxX;
-    const y = Math.random() * maxY;
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
 
-    noBtn.style.position = "fixed";  // 👈 KEY FIX
-    noBtn.style.left = x + "px";
-    noBtn.style.top = y + "px";
-}
+    noBtn.style.left = randomX + "px";
+    noBtn.style.top = randomY + "px";
+});
 
+/* PASSWORD CHECK */
+unlockBtn.addEventListener("click", () => {
+    const input = document.getElementById("password").value;
+    const error = document.getElementById("error");
 
+    if (input === correctPassword) {
+        document.getElementById("password-screen").classList.add("hidden");
+        document.getElementById("gift-screen").classList.remove("hidden");
+    } else {
+        error.textContent = "Wrong password 😜 Try again!";
+    }
+});
