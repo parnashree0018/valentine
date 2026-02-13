@@ -4,44 +4,30 @@
     <meta charset="UTF-8">
     <title>Valentine 💖</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Link CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-<div class="container">
 
-    <!-- QUESTION SCREEN -->
-    <div id="question">
-        <h1>Will you be my Valentine? 💘</h1>
-        <button id="yes" onclick="goToPassword()">YES 💖</button>
-        <button id="no" onclick="moveNo()">NO 💔</button>\
-        
-    </div>
-
-    <!-- PASSWORD SCREEN -->
-    <div class="screen" id="passwordScreen">
-        <h2>🔐 Enter the secret password</h2>
-        <p>(Hint: Something only we know 💕)</p>
-        <input type="password" id="password" placeholder="Enter password 💌">
-        <br>
-        <button class="unlock-btn" onclick="checkPassword()">Unlock 🎁</button>
-        <p class="error" id="errorMsg"></p>
-    </div>
-
-    <!-- GIFT SCREEN -->
-    <div class="screen gift" id="giftScreen">
-        <h2>🎁 Your Valentine Gift 🎁</h2>
-        <p>You unlocked my heart ❤️</p>
-        <img src="gift.jpg" alt="Gift">
-        <p>I choose you — today, tomorrow & always 💖</p>
-    </div>
-
+<div id="question-screen" class="center-screen">
+    <h1>Will you be my Valentine? 💘</h1>
+    <button id="yes">YES 💖</button>
+    <button id="no">NO 💔</button>
 </div>
 
-<!-- Link JS -->
+<div id="password-screen" class="center-screen hidden">
+    <h2>🔐 Enter the Secret Password</h2>
+    <input type="password" id="password" placeholder="Enter password">
+    <button id="unlock">Unlock 🎁</button>
+    <p id="error"></p>
+</div>
+
+<div id="gift-screen" class="center-screen hidden">
+    <h2>🎁 Your Valentine Gift 🎁</h2>
+    <img src="gift.jpg" alt="Gift">
+    <p>I choose you — today, tomorrow & always 💖</p>
+</div>
+
 <script src="script.js"></script>
 </body>
 </html>
-
